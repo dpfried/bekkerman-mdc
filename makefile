@@ -15,6 +15,7 @@ LIBS	=
 
 OBJ  = obj
 SOURCE = source
+BIN = bin
 
 ####### Files
 
@@ -27,7 +28,7 @@ OBJECTS =	$(OBJ)/algorithm.o \
 		$(OBJ)/node.o \
 		$(OBJ)/read_ini.o \
 		$(OBJ)/read_input.o
-TARGET	=	bin/mdc
+TARGET	=	$(BIN)/mdc
 
 ####### Implicit rules
 
@@ -38,9 +39,10 @@ TARGET	=	bin/mdc
 
 ####### Build rules
 
-all:	$(TARGET)
+all:	$(TARGET) 
 
 $(TARGET): $(OBJECTS)
+	mkdir -p $(BIN)
 	$(LINK) $(LFLAGS) -o $(TARGET) $(INCPATH) $(OBJECTS) $(LIBS)
 
 clean:
